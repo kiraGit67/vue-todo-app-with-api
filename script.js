@@ -22,6 +22,16 @@ Vue.createApp({
         return this.toDos;
       }
     },
+    countToDos() {
+      return this.filteredToDos.length;
+    },
+    countText() {
+      if (this.filter === "all") {
+        return "Gesamt-Anzahl";
+      } else {
+        return "Anzahl " + this.filter;
+      }
+    },
   },
   methods: {
     getToDoData() {
@@ -75,13 +85,28 @@ Vue.createApp({
         if (toDo.done === true) {
           fetch(this.apiURL + "/" + toDo.id, {
             method: "DELETE",
-          })
-            .then((response) => response.json())
-            .then(() => {});
+            headers: {
+              Accept: "application/json",
+              "Content-Type": "application/json",
+            },
+          }).then((response) => response.json());
         }
       });
-      //this.toDos.filter((toDo) => toDo.done === true);
+      this.toDos.filter((toDo) => toDo.done === true);
       //this.getToDoData();
+    },
+    deleteSelectedToDo(toDo) {
+      fetch(this.apiURL + "/" + toDo.id, {
+        method: "DELETE",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      }).then((response) => response.json());
+      this.toDos.splice(
+        this.toDos.findIndex((element) => element.id === toDo.id),
+        1
+      );
     },
   },
 }).mount("#app");

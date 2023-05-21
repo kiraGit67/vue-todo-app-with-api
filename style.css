@@ -65,6 +65,22 @@ input[type="checkbox"] {
   accent-color: green;
 }
 
+.radio-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.radio-wrapper + .radio-wrapper {
+  margin-top: 0.35rem;
+}
+
+input[type="radio"] {
+  width: 1.15rem;
+  height: 1.15rem;
+  accent-color: green;
+  margin-right: 0.5rem;
+}
+
 button {
   padding: 0.25rem 0.5rem;
   background-color: transparent;
@@ -87,6 +103,12 @@ li + li {
   margin-top: 1rem;
 }
 
+li {
+  display: flex;
+  justify-content: space-between;
+}
+
 .line-through {
   text-decoration: line-through;
+  _justify-content: space-between;
 }

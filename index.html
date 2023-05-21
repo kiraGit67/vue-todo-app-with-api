@@ -45,7 +45,7 @@
                 <h2>My ToDo's</h2>
                 <h3>{{countText}}: {{countToDos}}</h3>
                 <ul>
-                    <li v-for="toDo in filteredToDos" :key="toDo.id">
+                    <li v-for="toDo in filteredToDos" :key="toDo.id" :class="{'line-through':toDo.done}">
                         <input type="checkbox" v-model="toDo.done" @change="updateToDo(toDo)">
                         {{ toDo.description }}
                         <button class="delete-btn" v-if="toDo.done" @click="deleteSelectedToDo(toDo)">X</button>

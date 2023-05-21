@@ -27,9 +27,9 @@ Vue.createApp({
     },
     countText() {
       if (this.filter === "all") {
-        return "Gesamt-Anzahl";
+        return "Total Count";
       } else {
-        return "Anzahl " + this.filter;
+        return "Count of " + this.filter;
       }
     },
   },

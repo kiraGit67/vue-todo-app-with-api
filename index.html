@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDo App with API and Vue.js</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="app">
+        <header>
+            <h1>ToDo App</h1>
+        </header>
+        <main>
+            <section id="options">
+                <h2>Add New ToDo</h2>
+                <div class="input-wrapper">
+                    <input type="text" name="new-todo" id="new-todo" v-model="newToDo" />
+                    <button id="add-button" @click="addNewToDo()">Add ToDo</button>
+                    <button id="delete-button" @click="deleteDoneToDos()">Delete Done ToDos</button>
+                </div>
+                <h2>Filter ToDo's</h2>
+                <div class="radio-container">
+                    <div class="radio-wrapper">
+                        <input type="radio" name="filter-todos" id="all" value="all" v-model="filter"
+                            @change="filterToDos()">
+                        <label for="all">All</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" name="filter-todos" id="done" value="done" v-model="filter"
+                            @change="filterToDos()">
+                        <label for="done">Done</label>
+                    </div>
+                    <div class="radio-wrapper">
+                        <input type="radio" name="filter-todos" id="open" value="open" v-model="filter"
+                            @change="filterToDos()">
+                        <label for="open">Open</label>
+                    </div>
+                </div>
+            </section>
+            <section id="toDos-section">
+                <h2>My ToDo's</h2>
+                <ul>
+                    <li v-for="toDo in filteredToDos" :key="toDo.id">
+                        <input type="checkbox" v-model="toDo.done" @change="updateToDo(toDo)">
+                        {{ toDo.description }}
+                        <button class="delete-btn" v-if="toDo.done">X</button>
+                    </li>
+                </ul>
+                <pre>{{newToDo}}</pre>
+            </section>
+        </main>
+    </div>
+    <script src="vue.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>

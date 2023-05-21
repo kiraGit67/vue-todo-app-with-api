@@ -86,3 +86,7 @@ ul {
 li + li {
   margin-top: 1rem;
 }
+
+.line-through {
+  text-decoration: line-through;
+}
